@@ -59,6 +59,26 @@ La aplicación está dockerizada y se puede levantar junto a su base de datos Po
 * **Importar Excel**
     ```POST /api/creditos/importar```
 ## Importar Datos ( POST /api/creditos/importar)
-### Diccionario de Datos
+* ### Diccionario de Datos
 ![diccionarioDatos.png](diccionarioDatos.png)
+* ### Ejecutar Api
+  1. #### Usando cURL :
+    Puedes usar cURL desde la terminal. Supongamos que tu archivo Excel se llama creditos.xlsx y está en la carpeta actual, la instrucción sería:
+     ``` 
+  curl -X POST -F archivo=@creditos.xlsx http://localhost:8080/api/creditos/importar
+    ```
+     En este comando, -F archivo=@creditos.xlsx indica que se envía el archivo en la clave archivo.
 
+  2. #### Usando Postman
+     
+     1. Selecciona el método:\
+        Configura la solicitud como POST y establece la URL: http://localhost:8080/api/creditos/importar.
+
+     2. Configurar Body
+        * En la pestaña Body de Postman, selecciona la opción form-data. 
+        * Agrega un nuevo key con el nombre **archivo**. 
+        * En la columna Type, selecciona File. 
+        * Adjunta el archivo Excel (creditos.xlsx).
+
+     3. Enviar la petición:\
+     Haz clic en Send. Si el archivo se importa correctamente, recibirás en la respuesta una lista de objetos de tipo Credito con la información insertada en la base de datos.
